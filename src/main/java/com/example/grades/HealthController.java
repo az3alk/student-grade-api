@@ -9,6 +9,7 @@ public class HealthController {
 
     @GetMapping({"/api/health", "/health"})
     public Map<String, String> health() {
+        logger.info("Health check called");
         return Map.of("status", "Abdulaziz");
     }
 }
