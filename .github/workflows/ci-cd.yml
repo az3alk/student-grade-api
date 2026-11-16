@@ -25,7 +25,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn --batch-mode verify sonar:sonar
+        run: >
+          mvn --batch-mode verify
+          org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.organization=abdulaziz3alk
+          -Dsonar.projectKey=abdulaziz3alk_student-grade-api
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
